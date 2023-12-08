@@ -27,9 +27,9 @@ def get_date_key(dt_now:datetime):
     hours_key = 0
     hours_rest = hours%3
     if hours_rest > 1:
-        hours_key = (hours//3)+3
+        hours_key = 3*(hours//3)+3
     elif hours_rest==1:
-        hours_key = hours//3
+        hours_key = (hours//3)*3
     else:
         hours_key = hours
     
