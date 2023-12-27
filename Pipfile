@@ -8,6 +8,8 @@ fastapi = "*"
 uvicorn = "*"
 requests = "*"
 pytz = "*"
+psutil = "*"
+py-cpuinfo = "*"
 
 [dev-packages]
 
