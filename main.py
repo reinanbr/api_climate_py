@@ -5,8 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from fastapi import FastAPI,Request
 import os
-
-from info_cpu import cpu_info, cpu_stats,memory_stats
+import psutil as ps
+from info_cpu import cpu_info, cpu_stats,memory_stats, sensor_temp, disk_usage
 
 
 app = FastAPI(debug=True)
@@ -52,7 +52,9 @@ def get_data_by_date(dt):
 def info_system():
     cpu = {'stats':cpu_stats(),'info':cpu_info()}
     memory = {'stats':memory_stats()}
-    system_info = {'cpu':cpu,'memory':memory}
+    sens_temp = {"stats":sensor_temp()}
+    disk_info = disk_usage()
+    system_info = {'cpu':cpu,'memory':memory,"temperature":sens_temp,"disk":disk_info}
     return system_info
 
 
