@@ -7,7 +7,7 @@ from fastapi import FastAPI,Request
 import os
 import psutil as ps
 from info_cpu import cpu_info, cpu_stats,memory_stats, sensor_temp, disk_usage
-
+import subprocess as sub
 
 app = FastAPI(debug=True)
 origins = ["*"]
@@ -54,7 +54,8 @@ def info_system():
     memory = {'stats':memory_stats()}
     sens_temp = {"stats":sensor_temp()}
     disk_info = disk_usage()
-    system_info = {'cpu':cpu,'memory':memory,"temperature":sens_temp,"disk":disk_info}
+    uname = str(sub.check_output(["uname", "-a"])).split("#")[0].split("b'")[1]
+    system_info = {'uname':uname,'cpu':cpu,'memory':memory,"temperature":sens_temp,"disk":disk_info}
     return system_info
 
 
