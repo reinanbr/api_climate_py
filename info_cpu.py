@@ -27,16 +27,17 @@ def memory_stats():
     return memory
 
 def sensor_temp():
-    cpu_temp = [sen.current for sen in ps.sensors_temperatures()['coretemp']]
-    cpu_temp_med = sum(cpu_temp)/len(cpu_temp)
+    #cpu_temp = [sen.current for sen in ps.sensors_temperatures()['coretemp']]
+    #cpu_temp_med = sum(cpu_temp)/len(cpu_temp)
     
-    cpu_temp_critical = [sen.critical for sen in ps.sensors_temperatures()['coretemp']]
-    cpu_temp_max_med = sum(cpu_temp_critical)/len(cpu_temp_critical)
+    #cpu_temp_critical = [sen.critical for sen in ps.sensors_temperatures()['coretemp']]
+    #cpu_temp_max_med = sum(cpu_temp_critical)/len(cpu_temp_critical)
     
-    return {
-        "cpu_temperature":cpu_temp_med,
-        "cpu_temperature_max":cpu_temp_max_med
-    }
+    #return {
+    #    "cpu_temperature":cpu_temp_med,
+    #    "cpu_temperature_max":cpu_temp_max_med
+    #}
+    return ps.sensors_temperatures()
 
 def disk_usage():
     disk_info = ps.disk_usage('/')
